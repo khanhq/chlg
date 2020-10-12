@@ -6,12 +6,14 @@ import (
 
 func Solution(n int) int {
 	num := 0
-	s := strconv.Itoa(n)
-	for _, v := range s {
-		n, _ = strconv.Atoi(string(v))
-		num += n
+	for _, v := range strconv.Itoa(n) {
+		x, _ := strconv.Atoi(string(v))
+		num += x
 	}
 	sum := num * 2
+	if sum > n {
+		return sum
+	}
 	tmp := ""
 	for i := 9; i > 0; i-- {
 		p := 0

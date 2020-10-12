@@ -2,12 +2,12 @@ package main
 
 import "testing"
 
-func TestSolution(t *testing.T){
+func TestSolution(t *testing.T) {
 	type args struct {
 		s string
 	}
 
-	tests := []struct{
+	tests := []struct {
 		name string
 		args args
 		want int
@@ -36,13 +36,12 @@ func TestSolution(t *testing.T){
 			},
 			9,
 		},
-
 	}
 
-	for _, tc := range tests{
+	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			if got := Solution(tc.args.s); got != tc.want{
-				t.Errorf("Solution() = %d, want = %d", got,tc.want)
+			if got := Solution(tc.args.s); got != tc.want {
+				t.Errorf("Solution() = %d, want = %d", got, tc.want)
 			}
 		})
 	}

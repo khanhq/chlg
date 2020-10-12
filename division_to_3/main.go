@@ -2,38 +2,32 @@ package main
 
 import (
 	"strconv"
-	"strings"
 )
 
+func main() {
+
+}
 func Solution(s string) int {
-	var result []int
-	arr1 := ToArray(s)
-	for i := 0; i < len(arr1); i++ {
-		arr := make([]string, len(arr1))
-		copy(arr, arr1)
+	result := make(map[string]int)
+	for i := 0; i < len(s); i++ {
 		for j := 0; j < 10; j++ {
-			arr[i] = strconv.Itoa(j)
-			if n,_ := strconv.Atoi(strings.Join(arr, "")) ; n%3 == 0 && isExist(result, n) == false {
-				result = append(result, n)
+			sum, digits := getSum(s, i, j)
+			if sum%3 == 0 {
+				j += 2
+				result[string(digits)] = 1
 			}
 		}
 	}
 	return len(result)
 }
 
-func ToArray(s string)[]string{
-	var result []string
-	for _, r := range s{
-		result = append(result, string(r))
+func getSum(s string, i, j int) (int, []byte) {
+	r := []byte(s)
+	r[i] = strconv.Itoa(j)[0]
+	total := 0
+	for _, d := range r {
+		sum, _ := strconv.Atoi(string(d))
+		total += sum
 	}
-	return  result
-}
-
-func isExist(arr []int, n int) bool{
-	for _, v := range arr{
-		if n == v{
-			return true
-		}
-	}
-	return false
+	return total, r
 }
