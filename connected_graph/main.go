@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -26,9 +25,6 @@ import (
 func Solution(n int, a, b []int) bool {
 	result := make(map[int]int)
 	for i := 0; i < len(a); i++ {
-		fmt.Println(a[i])
-		fmt.Println(b[i])
-
 		if math.Abs(float64(a[i]-b[i])) == 1 {
 			key := a[i]
 			if a[i] < b[i] {
